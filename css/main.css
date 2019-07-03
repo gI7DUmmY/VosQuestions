@@ -4,4 +4,14 @@
 
 table {
   margin-top: 2em;
+  cursor: pointer;
+}
+
+td i {
+  position: fixed;
+  right: 20px;
+}
+
+.reponse {
+  background-color: #81C784;
 }
