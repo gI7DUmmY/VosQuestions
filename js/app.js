@@ -14,7 +14,7 @@ const template = question => {
 // submit question
 form.addEventListener('submit', e => {
   e.preventDefault();
-  template(form.newQuestion.value);
+  if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
   form.reset();
   btnSub.blur();
 });
