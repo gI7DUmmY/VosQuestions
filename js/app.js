@@ -1,6 +1,6 @@
 const form = document.querySelector('form');
 const table = document.querySelector('tbody');
-const btnSub = document.querySelector('form button[type="submit"]');
+const btnSub = document.querySelector('button[type="submit"]');
 const btnClr = document.querySelector('button.clear');
 
 // génère question dans tableau
@@ -14,6 +14,11 @@ const template = question => {
 // submit question
 form.addEventListener('submit', e => {
   e.preventDefault();
+  if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
+  form.reset();
+});
+
+btnSub.addEventListener('click', () => {
   if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
   form.reset();
   btnSub.blur();
