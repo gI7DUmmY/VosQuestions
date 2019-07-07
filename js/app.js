@@ -9,6 +9,7 @@ const template = question => {
     <tr><td>${question}<i class="small material-icons del">delete_outline</i></td></tr>
   `;
   table.innerHTML += html;
+  localStorage.setItem('liste', table.innerHTML);
 };
 
 // submit question
@@ -27,8 +28,19 @@ btnSub.addEventListener('click', () => {
 // toggle question répondue ou suppr question
 table.addEventListener('click', e => {
   if (!e.target.classList.contains('del')) e.target.classList.toggle('reponse');
-  if (e.target.classList.contains('del')) e.target.parentElement.parentElement.remove();
+  if (e.target.classList.contains('del')) {
+    e.target.parentElement.parentElement.remove();
+    localStorage.setItem('liste', table.innerHTML);
+  };
 });
 
 // vider tableau des questions
-btnClr.addEventListener('click', () => table.innerHTML = '');
+btnClr.addEventListener('click', () => {
+  table.innerHTML = '';
+  localStorage.setItem('liste', table.innerHTML);
+});
+
+// chargement des questions avec localStorage
+if (localStorage.getItem('liste')) {
+  if (localStorage.getItem('liste').length > 0) table.innerHTML = localStorage.getItem('liste');
+}
