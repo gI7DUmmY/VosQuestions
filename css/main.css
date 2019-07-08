@@ -24,8 +24,9 @@ table {
 }
 
 td i {
-  position: fixed;
-  right: 20px;
+  /* position: fixed; */
+  float: right;
+  padding-right: 20px;
 }
 
 .reponse {
