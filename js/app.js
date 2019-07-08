@@ -6,7 +6,7 @@ const btnClr = document.querySelector('button.clear');
 // génère question dans tableau
 const template = question => {
   const html = `
-    <tr><td>${question}<i class="small material-icons del">delete_outline</i></td></tr>
+    <tr><td>${question}<i class="small material-icons del no-print">delete_outline</i></td></tr>
   `;
   table.innerHTML += html;
   localStorage.setItem('liste', table.innerHTML);
