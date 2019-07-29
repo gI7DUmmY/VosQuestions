@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 const table = document.querySelector('tbody');
 const btnSub = document.querySelector('button[type="submit"]');
-const btnClr = document.querySelector('button.clear');
+const btnClr = document.querySelector('#clear');
 
 // génère question dans tableau
 const template = question => {
@@ -16,11 +16,13 @@ const template = question => {
 form.addEventListener('submit', e => {
   e.preventDefault();
   if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
+  btnClr.classList.remove('disabled');
   form.reset();
 });
 
 btnSub.addEventListener('click', () => {
   if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
+  btnClr.classList.remove('disabled');
   form.reset();
   btnSub.blur();
 });
@@ -36,11 +38,15 @@ table.addEventListener('click', e => {
 
 // vider tableau des questions
 btnClr.addEventListener('click', () => {
-  table.innerHTML = '';
-  localStorage.setItem('liste', table.innerHTML);
+  const r = confirm('Vider le tableau ?');
+  if (r === true) {
+    table.innerHTML = '';
+    localStorage.setItem('liste', table.innerHTML);
+    btnClr.classList.add('disabled');
+  }
 });
 
 // chargement des questions avec localStorage
 if (localStorage.getItem('liste')) {
   if (localStorage.getItem('liste').length > 0) table.innerHTML = localStorage.getItem('liste');
-}
+} else btnClr.classList.add('disabled');

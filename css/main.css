@@ -8,19 +8,25 @@ h3 {
 
 .emoji {
   font-size: 0.7em;
+  vertical-align: top;
 }
 
 .row {
   margin-bottom: 10px !important;
 }
 
-button.clear {
+#clear {
   margin-right: 1em;
 }
 
 table {
   margin-top: 2em;
   cursor: pointer;
+  table-layout: fixed;
+}
+
+td {
+  word-wrap: break-word;
 }
 
 td i {
