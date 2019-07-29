@@ -6,7 +6,20 @@ const btnClr = document.querySelector('#clear');
 // génère question dans tableau
 const template = question => {
   const html = `
-    <tr><td>${question}<i class="small material-icons del no-print">delete_outline</i></td></tr>
+    <tr>
+      <td>
+        ${question}
+        <i class="small
+          material-icons
+          del
+          no-print
+          orange-text
+          text-accent-2"
+        >
+          delete_outline
+        </i>
+      </td>
+    </tr>
   `;
   table.innerHTML += html;
   localStorage.setItem('liste', table.innerHTML);
@@ -43,6 +56,7 @@ btnClr.addEventListener('click', () => {
     table.innerHTML = '';
     localStorage.setItem('liste', table.innerHTML);
     btnClr.classList.add('disabled');
+    form.reset();
   }
 });
 
