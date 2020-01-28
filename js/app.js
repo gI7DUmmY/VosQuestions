@@ -22,21 +22,24 @@ const template = question => {
     </tr>
   `;
   table.innerHTML += html;
-  localStorage.setItem('liste', table.innerHTML);
 };
 
-// submit question
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
+// add question
+const add = question => {
+  if (question.trim() != '') template(question);
+  localStorage.setItem('liste', table.innerHTML);
   btnClr.classList.remove('disabled');
   form.reset();
+};
+
+// submit form
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  add(form.newQuestion.value);
 });
 
 btnSub.addEventListener('click', () => {
-  if (form.newQuestion.value.trim() != '') template(form.newQuestion.value);
-  btnClr.classList.remove('disabled');
-  form.reset();
+  add(form.newQuestion.value);
   btnSub.blur();
 });
 
